@@ -7,7 +7,8 @@ configuration {
    show-icons: true;
    icon-theme: "Papirus";
 }
-//@theme "/home/tito/.config/rofi/themes/catppuccin-macchiato.rasi"
-//@theme "/usr/share/rofi/themes/DarkBlue.rasi"
-//@theme "/usr/share/rofi/themes/sidebar-v2.rasi"
-@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"
+
+
+@theme "/rofi-v1/config-v1.rasi"
+
+//@theme "/rofi-v2/config-v2.rasi"

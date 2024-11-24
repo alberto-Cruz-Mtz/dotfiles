@@ -1,93 +1,68 @@
 #!/bin/bash
 
 # Script de instalación para Arch Linux
-set -e  # Detener el script en caso de error
 
-# Función para mostrar mensajes en colores
-info() { echo -e "\e[34m[INFO]\e[0m $1"; }
-success() { echo -e "\e[32m[SUCCESS]\e[0m $1"; }
-error() { echo -e "\e[31m[ERROR]\e[0m $1"; }
-
-# Ruta al directorio de configuración en el repositorio
-CONFIG_DIR="$(pwd)/config"
-
-# Verificar si el directorio de configuraciones existe
-if [ ! -d "$CONFIG_DIR" ]; then
-  error "No se encontró el directorio de configuraciones ($CONFIG_DIR). Asegúrate de haber clonado correctamente el repositorio."
+# Verificar si se proporcionó un directorio de configuración
+if [ -z "$1" ]; then
+  echo "Por favor, proporciona el directorio de configuración como argumento."
+  echo "Uso: ./install.sh /ruta/al/directorio/de/configuracion"
   exit 1
 fi
 
+CONFIG_DIR=$1
+
 # Actualizar y sincronizar la base de datos de paquetes
-info "Actualizando la base de datos de paquetes..."
 sudo pacman -Syu --noconfirm
 
 # Instalar paquetes necesarios
-info "Instalando paquetes esenciales..."
 sudo pacman -S --noconfirm git base-devel kitty rofi waybar fastfetch swww
 
-# Instalar fish si se desea
+# Instalar Fish y Oh My Fish (opcional)
 read -p "¿Deseas instalar fish como shell (S/n)? " install_fish
 install_fish=${install_fish:-S}
+
 if [[ "$install_fish" =~ ^[Ss]$ ]]; then
-  info "Instalando fish..."
   sudo pacman -S --noconfirm fish
 
-  # Instalar Oh My Fish si se desea
-  read -p "¿Deseas instalar Oh My Fish (omf) (S/n)? " install_omf
+  read -p "¿Deseas instalar Oh My Fish (OMF) (S/n)? " install_omf
   install_omf=${install_omf:-S}
+
   if [[ "$install_omf" =~ ^[Ss]$ ]]; then
-    info "Instalando Oh My Fish..."
     curl -L https://get.oh-my.fish | fish
     fish -c "omf install pj"
   fi
 fi
 
-# Instalar yay si se desea
-read -p "¿Deseas instalar yay para gestionar paquetes de AUR (S/n)? " install_yay
-install_yay=${install_yay:-S}
-if [[ "$install_yay" =~ ^[Ss]$ ]]; then
-  if ! command -v yay &> /dev/null; then
-    info "Instalando yay..."
-    cd /tmp
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si --noconfirm
-  else
-    info "yay ya está instalado."
-  fi
+# Instalar yay para gestionar paquetes de AUR
+echo "Instalando yay para gestionar paquetes de AUR..."
+if ! command -v yay &> /dev/null; then
+  cd /tmp
+  git clone https://aur.archlinux.org/yay.git
+  cd yay
+  makepkg -si --noconfirm
 fi
 
-# Copiar configuraciones
-info "Copiando configuraciones desde $CONFIG_DIR a ~/.config..."
-declare -A CONFIGS=(
-  ["kitty"]="Kitty terminal"
-  ["hypr"]="Hyprland"
-  ["waybar"]="Waybar"
-  ["fastfetch"]="Fastfetch"
-  ["rofi"]="Rofi"
-)
+# Instalar paquetes adicionales con yay
+echo "Instalando paquetes de AUR con yay..."
+yay -S --noconfirm waypaper python-screeninfo python-imageio
 
-for dir in "${!CONFIGS[@]}"; do
-  if [ -d "$CONFIG_DIR/$dir" ]; then
-    info "Copiando ${CONFIGS[$dir]}..."
-    cp -r "$CONFIG_DIR/$dir" ~/.config/
-  else
-    error "No se encontró la configuración de ${CONFIGS[$dir]} en $CONFIG_DIR."
-  fi
-done
+# Copiar configuraciones desde el directorio proporcionado
+echo "Copiando configuraciones desde $CONFIG_DIR/.config"
+cp -r $CONFIG_DIR/.config/kitty ~/.config/
+cp -r $CONFIG_DIR/.config/hypr ~/.config/
+cp -r $CONFIG_DIR/.config/waybar ~/.config/
+cp -r $CONFIG_DIR/.config/fastfetch ~/.config/
+cp -r $CONFIG_DIR/.config/rofi ~/.config/
+cp -r $CONFIG_DIR/.config/waypaper ~/.config/
+cp -r $CONFIG_DIR/.config/wallpaper ~/.config/
 
-# Configurar fish como shell por defecto si se seleccionó
+# Copiar configuraciones de fish si se seleccionó
 if [[ "$install_fish" =~ ^[Ss]$ ]]; then
-  if ! grep -q "/usr/bin/fish" /etc/passwd; then
-    info "Cambiando el shell predeterminado a fish..."
-    chsh -s /usr/bin/fish
-  else
-    info "fish ya es el shell predeterminado."
-  fi
+  cp -r $CONFIG_DIR/.config/fish ~/.config/
+  chsh -s /usr/bin/fish
 fi
 
-# Crear directorios de workspace
-info "Creando directorios en ~/workspace..."
+# Crear directorios de workspace en /home
 mkdir -p ~/workspace/{projects,documents,scripts}
 
-success "Instalación y configuración completadas. Por favor, reinicia tu terminal para aplicar los cambios."
+echo "Instalación y configuración completadas. Por favor, reinicia tu terminal para aplicar los cambios."
