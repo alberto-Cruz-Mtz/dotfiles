@@ -74,10 +74,10 @@ if [[ "$install_fish" =~ ^[Ss]$ ]]; then
   clear
 
   if [[ "$install_omf" =~ ^[Ss]$ ]]; then
-    print_info "Instalando Oh My Fish (OMF)..."
-    curl -L https://get.oh-my.fish | fish
-    fish -c "omf install pj"
-    clear
+   print_info "Instalando Oh My Fish (OMF) sin interrumpir..."
+   curl -L https://get.oh-my.fish | fish -c "exit"
+   clear
+   show_banner
   fi
 fi
 
