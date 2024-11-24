@@ -7,6 +7,22 @@ YELLOW='\033[0;33m'
 CYAN='\033[0;36m'
 RESET='\033[0m'
 
+show_banner() {
+  echo -e "${GREEN}"
+  echo "   ______      __  __           _    _ _  __   ______       _ _   "
+  echo "  / __ \ \    / / |  \/  |   /\ | |  | | | \ \ / / __ \     | | |  "
+  echo " | |  | \ \  / /  | \  / |  /  \| |  | | |  \ V / |  | |    | | |  "
+  echo " | |  | |\ \/ /   | |\/| | / /\ \ |  | | |   > <| |  | |_   | | |  "
+  echo " | |__| | \  /    | |  | |/ ____ \ |__| | |  / . \ |__| | |_|_|_|  "
+  echo "  \____/   \/     |_|  |_/_/    \_\____/|_| /_/ \_\____/ (_|_|_|_) "
+  echo -e "             ${CYAN}Dotfiles Installer for Hyprland & Arch Linux${RESET}"
+  echo
+}
+
+# Mostrar el banner al inicio
+clear
+show_banner
+
 # Función para imprimir mensajes
 print_info() {
   echo -e "${CYAN}[INFO]${RESET} $1"
