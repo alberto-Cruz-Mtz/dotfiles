@@ -8,18 +8,12 @@ info() { echo -e "\e[34m[INFO]\e[0m $1"; }
 success() { echo -e "\e[32m[SUCCESS]\e[0m $1"; }
 error() { echo -e "\e[31m[ERROR]\e[0m $1"; }
 
-# Verificar si se proporcionó un directorio de configuración
-if [ -z "$1" ]; then
-  error "Por favor, proporciona el directorio de configuración como argumento."
-  echo "Uso: ./install.sh /ruta/al/directorio/de/configuracion"
-  exit 1
-fi
+# Ruta al directorio de configuración en el repositorio
+CONFIG_DIR="$(pwd)/config"
 
-CONFIG_DIR="$1"
-
-# Validar si el directorio de configuración existe
+# Verificar si el directorio de configuraciones existe
 if [ ! -d "$CONFIG_DIR" ]; then
-  error "El directorio de configuración $CONFIG_DIR no existe."
+  error "No se encontró el directorio de configuraciones ($CONFIG_DIR). Asegúrate de haber clonado correctamente el repositorio."
   exit 1
 fi
 
@@ -74,9 +68,9 @@ declare -A CONFIGS=(
 )
 
 for dir in "${!CONFIGS[@]}"; do
-  if [ -d "$CONFIG_DIR/.config/$dir" ]; then
+  if [ -d "$CONFIG_DIR/$dir" ]; then
     info "Copiando ${CONFIGS[$dir]}..."
-    cp -r "$CONFIG_DIR/.config/$dir" ~/.config/
+    cp -r "$CONFIG_DIR/$dir" ~/.config/
   else
     error "No se encontró la configuración de ${CONFIGS[$dir]} en $CONFIG_DIR."
   fi
