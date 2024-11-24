@@ -119,6 +119,18 @@ print_info "Creando directorios de trabajo..."
 mkdir -p ~/workspace/{projects,documents,scripts}
 clear
 
+# Eliminar el directorio de configuración después de copiarlo
+read -p "$(echo -e "${CYAN}¿Deseas eliminar el directorio de configuraciones del repositorio? (S/n): ${RESET}")" delete_config
+delete_config=${delete_config:-S}
+
+if [[ "$delete_config" =~ ^[Ss]$ ]]; then
+  print_info "Eliminando el directorio de configuraciones del repositorio..."
+  rm -rf "$CONFIG_DIR/config"
+  print_success "Directorio de configuraciones eliminado correctamente."
+fi
+clear
+show_banner
+
 # Finalizar con opción de reinicio
 read -p "$(echo -e "${CYAN}¿Deseas reiniciar el sistema ahora? (S/n): ${RESET}")" restart_now
 restart_now=${restart_now:-S}
