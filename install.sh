@@ -81,4 +81,35 @@ yay -S --noconfirm waypaper python-screeninfo python-imageio
 clear
 
 # Copiar configuraciones desde el directorio proporcionado
-print_info "Copiando configuraciones desde $CONFIG_DIR/config...
+print_info "Copiando configuraciones desde $CONFIG_DIR/config..."
+cp -r $CONFIG_DIR/config/kitty ~/.config/
+cp -r $CONFIG_DIR/config/hypr ~/.config/
+cp -r $CONFIG_DIR/config/waybar ~/.config/
+cp -r $CONFIG_DIR/config/fastfetch ~/.config/
+cp -r $CONFIG_DIR/config/rofi ~/.config/
+cp -r $CONFIG_DIR/config/waypaper ~/.config/
+clear
+
+# Copiar configuraciones de fish si se seleccionó
+if [[ "$install_fish" =~ ^[Ss]$ ]]; then
+  print_info "Copiando configuraciones de fish..."
+  cp -r $CONFIG_DIR/config/fish ~/.config/
+  chsh -s /usr/bin/fish
+  clear
+fi
+
+# Crear directorios de workspace en /home
+print_info "Creando directorios de trabajo..."
+mkdir -p ~/workspace/{projects,documents,scripts}
+clear
+
+# Finalizar con opción de reinicio
+read -p "$(echo -e "${CYAN}¿Deseas reiniciar el sistema ahora? (S/n): ${RESET}")" restart_now
+restart_now=${restart_now:-S}
+
+if [[ "$restart_now" =~ ^[Ss]$ ]]; then
+  print_warning "Reiniciando el sistema..."
+  sudo reboot
+else
+  print_success "Instalación y configuración completadas. Por favor, reinicia el sistema manualmente más tarde."
+fi
