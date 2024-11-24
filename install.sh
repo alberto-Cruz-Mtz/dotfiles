@@ -51,7 +51,7 @@ print_error() {
 #  exit 1
 #fi
 
-CONFIG_DIR=$1
+CONFIG_DIR=$(pwd)
 
 # Actualizar y sincronizar la base de datos de paquetes
 print_info "Actualizando el sistema y sincronizando la base de datos de paquetes..."
