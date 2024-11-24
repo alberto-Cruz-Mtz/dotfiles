@@ -1,74 +1,99 @@
 #!/bin/bash
 
 # Script de instalación para Arch Linux
+set -e  # Detener el script en caso de error
+
+# Función para mostrar mensajes en colores
+info() { echo -e "\e[34m[INFO]\e[0m $1"; }
+success() { echo -e "\e[32m[SUCCESS]\e[0m $1"; }
+error() { echo -e "\e[31m[ERROR]\e[0m $1"; }
 
 # Verificar si se proporcionó un directorio de configuración
 if [ -z "$1" ]; then
-  echo "Por favor, proporciona el directorio de configuración como argumento."
+  error "Por favor, proporciona el directorio de configuración como argumento."
   echo "Uso: ./install.sh /ruta/al/directorio/de/configuracion"
   exit 1
 fi
 
-CONFIG_DIR=$1
+CONFIG_DIR="$1"
+
+# Validar si el directorio de configuración existe
+if [ ! -d "$CONFIG_DIR" ]; then
+  error "El directorio de configuración $CONFIG_DIR no existe."
+  exit 1
+fi
 
 # Actualizar y sincronizar la base de datos de paquetes
+info "Actualizando la base de datos de paquetes..."
 sudo pacman -Syu --noconfirm
 
 # Instalar paquetes necesarios
+info "Instalando paquetes esenciales..."
 sudo pacman -S --noconfirm git base-devel kitty rofi waybar fastfetch swww
 
-# Preguntar si se desea instalar fish
+# Instalar fish si se desea
 read -p "¿Deseas instalar fish como shell (S/n)? " install_fish
 install_fish=${install_fish:-S}
-
-# Instalar fish si se seleccionó
 if [[ "$install_fish" =~ ^[Ss]$ ]]; then
+  info "Instalando fish..."
   sudo pacman -S --noconfirm fish
 
-  # Preguntar si se desea instalar Oh My Fish
+  # Instalar Oh My Fish si se desea
   read -p "¿Deseas instalar Oh My Fish (omf) (S/n)? " install_omf
   install_omf=${install_omf:-S}
-
   if [[ "$install_omf" =~ ^[Ss]$ ]]; then
-    # Instalar Oh My Fish
+    info "Instalando Oh My Fish..."
     curl -L https://get.oh-my.fish | fish
-
-    # Instalar tema pj con Oh My Fish
     fish -c "omf install pj"
   fi
 fi
 
-# Preguntar si se desea instalar yay
+# Instalar yay si se desea
 read -p "¿Deseas instalar yay para gestionar paquetes de AUR (S/n)? " install_yay
 install_yay=${install_yay:-S}
-
-# Instalar AUR helper (yay) si se seleccionó
 if [[ "$install_yay" =~ ^[Ss]$ ]]; then
   if ! command -v yay &> /dev/null; then
+    info "Instalando yay..."
     cd /tmp
     git clone https://aur.archlinux.org/yay.git
     cd yay
     makepkg -si --noconfirm
+  else
+    info "yay ya está instalado."
   fi
 fi
 
 # Copiar configuraciones
-echo "Copiando configuraciones desde $CONFIG_DIR/.config"
-cp -r $CONFIG_DIR/.config/kitty ~/.config/
-cp -r $CONFIG_DIR/.config/hypr ~/.config/
-cp -r $CONFIG_DIR/.config/waybar ~/.config/
-cp -r $CONFIG_DIR/.config/fastfetch ~/.config/
-cp -r $CONFIG_DIR/.config/rofi ~/.config/
+info "Copiando configuraciones desde $CONFIG_DIR a ~/.config..."
+declare -A CONFIGS=(
+  ["kitty"]="Kitty terminal"
+  ["hypr"]="Hyprland"
+  ["waybar"]="Waybar"
+  ["fastfetch"]="Fastfetch"
+  ["rofi"]="Rofi"
+)
 
-# Copiar configuraciones de fish si se seleccionó
+for dir in "${!CONFIGS[@]}"; do
+  if [ -d "$CONFIG_DIR/.config/$dir" ]; then
+    info "Copiando ${CONFIGS[$dir]}..."
+    cp -r "$CONFIG_DIR/.config/$dir" ~/.config/
+  else
+    error "No se encontró la configuración de ${CONFIGS[$dir]} en $CONFIG_DIR."
+  fi
+done
+
+# Configurar fish como shell por defecto si se seleccionó
 if [[ "$install_fish" =~ ^[Ss]$ ]]; then
-  cp -r $CONFIG_DIR/.config/fish ~/.config/
-  # Cambiar shell por defecto a fish
-  chsh -s /usr/bin/fish
+  if ! grep -q "/usr/bin/fish" /etc/passwd; then
+    info "Cambiando el shell predeterminado a fish..."
+    chsh -s /usr/bin/fish
+  else
+    info "fish ya es el shell predeterminado."
+  fi
 fi
 
-# Crear directorios de workspace en /home
+# Crear directorios de workspace
+info "Creando directorios en ~/workspace..."
 mkdir -p ~/workspace/{projects,documents,scripts}
 
-echo "Instalación y configuración completadas. Por favor, reinicia tu terminal para aplicar los cambios."
-
+success "Instalación y configuración completadas. Por favor, reinicia tu terminal para aplicar los cambios."
