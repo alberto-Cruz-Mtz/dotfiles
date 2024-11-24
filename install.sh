@@ -56,7 +56,7 @@ clear
 
 # Instalar paquetes necesarios
 print_info "Instalando paquetes esenciales..."
-sudo pacman -S --noconfirm git base-devel kitty rofi waybar fastfetch swww swaync
+sudo pacman -S --noconfirm git base-devel kitty rofi waybar fastfetch swww swaync ttf-iosevkaterm-nerd
 clear
 
 # Instalar Fish y Oh My Fish (opcional)
