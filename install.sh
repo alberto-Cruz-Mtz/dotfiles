@@ -73,16 +73,16 @@ if [[ "$install_fish" =~ ^[Ss]$ ]]; then
   sudo pacman -S --noconfirm fish
   clear
 
-  read -p "$(echo -e "${CYAN}¿Deseas instalar Oh My Fish (OMF) (S/n)? ${RESET}")" install_omf
-  install_omf=${install_omf:-S}
-  clear
+#  read -p "$(echo -e "${CYAN}¿Deseas instalar Oh My Fish (OMF) (S/n)? ${RESET}")" install_omf
+#  install_omf=${install_omf:-S}
+#  clear
 
-  if [[ "$install_omf" =~ ^[Ss]$ ]]; then
-   print_info "Instalando Oh My Fish (OMF) sin interrumpir..."
-   curl -L https://get.oh-my.fish | fish -c "exit"
-   clear
-   show_banner
-  fi
+#  if [[ "$install_omf" =~ ^[Ss]$ ]]; then
+#   print_info "Instalando Oh My Fish (OMF) sin interrumpir..."
+#   curl -L https://get.oh-my.fish | fish -c "exit"
+#   clear
+#   show_banner
+#  fi
 fi
 
 # Instalar yay para gestionar paquetes de AUR
@@ -119,9 +119,9 @@ if [[ "$install_fish" =~ ^[Ss]$ ]]; then
 fi
 
 # Crear directorios de workspace en /home
-print_info "Creando directorios de trabajo..."
-mkdir -p ~/workspace/{projects,documents,scripts}
-clear
+#print_info "Creando directorios de trabajo..."
+#mkdir -p ~/workspace/{projects,documents,scripts}
+#clear
 
 # Eliminar el directorio de configuración después de copiarlo
 read -p "$(echo -e "${CYAN}¿Deseas eliminar el directorio de configuraciones del repositorio? (S/n): ${RESET}")" delete_config
