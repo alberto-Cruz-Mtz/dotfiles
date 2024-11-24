@@ -41,11 +41,11 @@ print_error() {
 }
 
 # Verificar si se proporcionó un directorio de configuración
-if [ -z "$1" ]; then
-  print_error "Por favor, proporciona el directorio de configuración como argumento."
-  echo "Uso: ./install.sh /ruta/al/directorio/de/configuracion"
-  exit 1
-fi
+#if [ -z "$1" ]; then
+#  print_error "Por favor, proporciona el directorio de configuración como argumento."
+#  echo "Uso: ./install.sh /ruta/al/directorio/de/configuracion"
+#  exit 1
+#fi
 
 CONFIG_DIR=$1
 
