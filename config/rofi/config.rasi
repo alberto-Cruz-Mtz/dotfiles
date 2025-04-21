@@ -1,14 +1,10 @@
 configuration {
-   display-drun: "Applications";
-   display-window: "Windows:";
-   drun-display-format: "{icon} {name}";
-   font: "IosevkaTerm Nerd Font 13";
+   //display-drun: "Applications";
+   //display-window: "Windows:";
+   //drun-display-format: "{icon} {name}";
    //modi: "window, run, drun";
    show-icons: true;
-   icon-theme: "Papirus";
+   //icon-theme: "Papirus";
 }
 
-
-@theme "/rofi-v1/config-v1.rasi"
-
-//@theme "/rofi-v2/config-v2.rasi"
+@theme "/theme/rounded-blue-dark.rasi"
