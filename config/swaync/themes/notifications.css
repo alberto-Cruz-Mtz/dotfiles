@@ -1,4 +1,5 @@
-@define-color text            @color4;
+
+@define-color text            @foreground;
 @define-color background-alt  @color1;
 @define-color selected        @color3;
 @define-color hover           @color5;
@@ -10,11 +11,13 @@
   /*selected:              @color2;      Button selected */
   /*hover:                 @color5;      Hover button */
   /*urgent:                @color6;      Urgency critical */
+  /*text-selected:         @background; */
 
-  
+  color: @text;
+
   all: unset;
-
-  font-family: "Proxima Nova";
+  font-size: 14px;
+  font-family: "JetBrains Mono Nerd Font 10";
   transition: 200ms;
 
 }
@@ -23,15 +26,14 @@
   outline: none;
   margin: 0;
   padding: 0px;
- 
 }
 
 .floating-notifications.background .notification-row .notification-background {
-  box-shadow: none;
-  background: alpha(@color9, .7);
-  border: none;
+  background: alpha(@background, .55);
+  box-shadow: 0 0 8px 0 rgba(0,0,0,.6);
+  border: 1px solid @selected;
   border-radius: 24px;
-  margin: 5px;
+  margin: 16px;
   padding: 0;
 }
 
@@ -74,15 +76,12 @@
 }
 
 .summary {
-  color: @color7;
   font-weight: 800;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .body {
-  margin-top: 5px;
-  color: @color7;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .floating-notifications.background .notification-row .notification-background .close-button {
@@ -110,4 +109,3 @@
 .notification.normal progress {
   background-color: @selected;
 }
-
