@@ -1,0 +1,162 @@
+window#waybar {
+  all: unset;
+}
+
+.bar1 tooltip {
+  background: @background;
+  color: @color7;
+}
+
+.bar1 .modules-left {
+  padding: 5px;
+  margin: 5 0 3 10;
+  border-radius: 10px;
+  background: alpha(@background, 0.6);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+}
+
+.bar1 .modules-center {
+  padding: 5px;
+  margin: 5 0 3 0;
+  border-radius: 10px;
+  background: alpha(@background, 0.6);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+}
+
+.bar1 .modules-right {
+  padding: 5px;
+  margin: 5 10 3 0;
+  border-radius: 10px;
+  background: alpha(@background, 0.6);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* módulos left */
+.bar1 #custom-launcher {
+  margin: 0 12px 0 6px;
+  font-size: 20px;
+  color: #00b8db;
+}
+
+.bar1 #cpu {
+  margin: 0 8px 0 4px;
+}
+
+.bar1 #temperature {
+  margin: 0 8px 0 4px;
+}
+
+.bar1 #memory {
+  margin: 0 8px 0 4px;
+}
+
+.bar1 #disk {
+  margin: 0 8px 0 4px;
+}
+
+.bar1 #cava {
+  margin: 0 8px 0 4px;
+}
+
+/* módulos center */
+.bar1 #workspaces {
+  padding: 0px 5px;
+}
+
+.bar1 #workspaces button {
+  all: unset;
+  padding: 0px 7px;
+  color: #e7000b;
+  transition: all 0.2s ease;
+}
+
+.bar1 #workspaces button:hover {
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
+  transition: all 1s ease;
+}
+
+.bar1 #workspaces button.active {
+  color: #fcc800;
+  border: none;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}
+
+.bar1 #workspaces button.empty {
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.2);
+}
+
+.bar1 #workspaces button.empty:hover {
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
+  transition: all 1s ease;
+}
+
+.bar1 #workspaces button.empty.active {
+  color: @color9;
+  border: none;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* módulos right */
+.bar1 #group-expand {
+  padding: 0px 5px;
+  transition: all 0.3s ease;
+}
+
+.bar1 #custom-expand {
+  padding: 0px 5px;
+  color: alpha(@foreground, 0.8);
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+}
+
+.bar1 #custom-expand:hover {
+  color: rgba(255, 255, 255, 0.2);
+  text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.5);
+}
+
+.bar1 #custom-keyboard {
+  margin: 0 6px 0 6px;
+}
+
+.bar1 #custom-power {
+  margin: 0 12px 0 6px;
+}
+
+.bar1 #custom-notification {
+  margin: 0 12px 0 6px;
+  transition: all 0.3s ease;
+  color: @color7;
+}
+
+.bar1 #clock {
+  padding: 0px 5px;
+  color: @color7;
+  transition: all 0.3s ease;
+}
+
+.bar1 #pulseaudio {
+  margin: 0 6px 0 6px;
+}
+
+.bar1 #custom-pacman {
+  margin: 0 6px 0 6px;
+  padding: 0px 5px;
+  transition: all 0.3s ease;
+  color: @color7;
+}
+
+.bar1 #network {
+  margin: 0 6px 0 6px;
+  transition: all 0.3s ease;
+  color: @color7;
+}
+
+.bar1 #language {
+  margin: 0 10px 0 8px;
+}
