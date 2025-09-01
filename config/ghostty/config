@@ -1,42 +1,62 @@
-#font configuration
-font-family = IosevkaTerm Nerd Font
-font-size = 13
-
-#background configuration
-background-opacity = 0.6 
-background-blur-radius = 20
-background-blur = 1
-background = #000000
-
-#cursor and selection configuration
-cursor-color = #c8c093
-selection-background = #2d4f67
-selection-foreground = #c8c093
-
-#window configuration
-window-padding-color = extend
-window-step-resize = true
-window-padding-balance = true
-window-decoration = none
-
-#palette configuration
-palette = 0=#16161d
-palette = 1=#c34043
-palette = 2=#76946a
-palette = 3=#c0a36e
-palette = 4=#7e9cd8
-palette = 5=#957fb8
-palette = 6=#6a9589
-palette = 7=#c8c093
-palette = 8=#727169
-palette = 9=#e82424
-palette = 10=#98bb6c
-palette = 11=#e6c384
-palette = 12=#7fb4ca
-palette = 13=#938aa9
-palette = 14=#7aa89f
-palette = 15=#dcd7ba
-
 confirm-close-surface = false 
 
-shell-integration = fish
+background-opacity = 0.85
+background-blur-radius = 20
+
+gtk-tabs-location = hidden
+window-decoration = false
+
+#palette = 0=#16161d
+#palette = 1=#c34043
+#palette = 2=#76946a
+#palette /= 3=#c0a36e
+#palette = 4=#7e9cd8
+#palette = 5=#957fb8
+#palette = 6=#6a9589
+#palette = 7=#c8c093
+#palette = 8=#727169
+#palette = 9=#e82424
+#palette = 10=#98bb6c
+#palette = 11=#e6c384
+#palette = 12=#7fb4ca
+#palette = 13=#938aa9
+#palette = 14=#7aa89f
+#palette = 15=#dcd7ba
+
+#background = 1f1f28
+#foreground = dcd7ba
+#cursor-color = c8c093
+#selection-background = 2d4f67
+#selection-foreground = c8c093
+
+font-family = IosevkaTerm Nerd Font
+font-size = 12
+window-padding-color = extend
+window-step-resize = false
+window-padding-balance = true
+window-height = 100
+window-width = 100
+
+# Use it by writing 'nvim' first and then the keybinding to open the file with nvim
+palette = 0=#06080f
+palette = 1=#cb7c94
+palette = 2=#b7cc85
+palette = 3=#ffe066
+palette = 4=#7fb4ca
+palette = 5=#ff8dd7
+palette = 6=#7aa89f
+palette = 7=#f3f6f9
+palette = 8=#8a8fa3
+palette = 9=#de8fa8
+palette = 10=#d1e8a9
+palette = 11=#fff7b1
+palette = 12=#a3d4d5
+palette = 13=#ffaeea
+palette = 14=#7fb4ca
+palette = 15=#f3f6f9
+background = 06080f
+foreground = f3f6f9
+cursor-color = e0c15a
+selection-background = 263356
+selection-foreground = f3f6f9
+
