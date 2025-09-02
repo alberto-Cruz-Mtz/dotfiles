@@ -1,3 +1,9 @@
+-- sugerencia: cambia el enabled = false y lazy = true de jdtls.lua antes
+-- para que instale paquetes que necesita este plugin
+-- y instala manualmente con Mason vscode-spring-boot-tools
+-- despues puedes cambiar nuevamente las propiedades de enable y lazy de jdtls.lua
+-- a como se encontraban al inicio, si las dejas activido puede causar conflictos con este plugin
+
 return {
   "mfussenegger/nvim-jdtls",
   ft = "java",

@@ -1,3 +1,8 @@
+-- sugerencia: cambia el enabled = false y lazy = true de este plugin antes
+-- para que instale paquetes que necesita este plugin
+-- despues cambia nuevamente las propiedades de enable y lazy
+-- a como se encontraban al inicio, si las dejas activido puede causar conflictos con nvim-jdtls.lua
+
 local jdtls = {
   handlers = {
     ["workspace/executeClientCommand"] = function(_, command, ctx)
