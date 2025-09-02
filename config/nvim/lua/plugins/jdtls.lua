@@ -32,14 +32,27 @@ local jdtls = {
           },
         },
       },
+      symbols = {
+        includeSourceMethodDeclarations = true,
+      },
+      project = {
+        referencedLibraries = {
+          "~/Downloads/lombok.jar",
+        },
+      },
     },
   },
 }
 
 return {
   "nvim-java/nvim-java",
+  lazy = true,
+  enabled = false,
   config = function()
     require("java").setup({
+      lombok = {
+        version = "nightly",
+      },
       spring_boot_tools = {
         enable = false,
       },
@@ -48,6 +61,11 @@ return {
       },
       jdtls = {
         jvm = "/usr/lib/jvm/java-17-openjdk/bin/java",
+      },
+      verification = {
+        invalid_order = true,
+        duplicate_setup_calls = true,
+        invalid_mason_registry = false,
       },
     })
     require("lspconfig").jdtls.setup(jdtls)
