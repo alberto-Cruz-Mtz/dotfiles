@@ -23,7 +23,7 @@ El lanzador de aplicaciones Rofi, configurado con un tema oscuro y bordes redond
 Mi terminal (Ghostty) y la configuración de Neovim, mostrando las opciones del gestor de plugins (LazyVim).
 
 <img src="https://raw.githubusercontent.com/Alberto-Cruz-mtz/dotfiles/main/screenshots/2025-09-02-173917_hyprshot.png" >
-<img src="https://raw.githubusercontent.com/Alberto-Cruz-mtz/dotfiles/main/screenshots/2025-09-02-182738_hyprshot.png" >
+<img src="https://raw.githubusercontent.com/Alberto-Cruz-mtz/dotfiles/main/screenshots/2025-09-02-182938_hyprshot.png" >
 
 ### ✨ Características principales
 
