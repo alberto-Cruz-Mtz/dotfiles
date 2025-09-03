@@ -6,12 +6,24 @@ Esta es mi configuración personal y modular para **Hyprland**
 
 ### 📷 Capturas de pantalla
 
-|                                                              Escritorio                                                               |                                                       Lanzador de aplicaciones                                                        |                                                            Editor de texto                                                            |
-| :-----------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://raw.githubusercontent.com/Alberto-Cruz-mtz/dotfiles/main/screenshots/2025-09-02-173759_hyprshot.png" width="300px"> | <img src="https://raw.githubusercontent.com/Alberto-Cruz-mtz/dotfiles/main/screenshots/2025-09-02-173936_hyprshot.png" width="300px"> | <img src="https://raw.githubusercontent.com/Alberto-Cruz-mtz/dotfiles/main/screenshots/2025-09-02-173917_hyprshot.png" width="300px"> |
-|                                         `Mi escritorio principal, mostrando la barra Waybar.`                                         |  `El lanzador de aplicaciones Rofi, configurado con un tema oscuro y bordes redondeados, haciendo juego con el estilo de Hyprland.`   |             `Mi terminal (Ghostty) y la configuración de Neovim, mostrando las opciones del gestor de plugins (LazyVim).`             |
+#### Escritorio
 
----
+Mi escritorio principal, mostrando la barra Waybar.
+
+<img src="https://raw.githubusercontent.com/Alberto-Cruz-mtz/dotfiles/main/screenshots/2025-09-02-173759_hyprshot.png" >
+
+#### Lanzador de aplicaciones
+
+El lanzador de aplicaciones Rofi, configurado con un tema oscuro y bordes redondeados, haciendo juego con el estilo de Hyprland.
+
+<img src="https://raw.githubusercontent.com/Alberto-Cruz-mtz/dotfiles/main/screenshots/2025-09-02-173936_hyprshot.png" >
+
+#### Terminal y Neovim
+
+Mi terminal (Ghostty) y la configuración de Neovim, mostrando las opciones del gestor de plugins (LazyVim).
+
+<img src="https://raw.githubusercontent.com/Alberto-Cruz-mtz/dotfiles/main/screenshots/2025-09-02-173917_hyprshot.png" >
+<img src="https://raw.githubusercontent.com/Alberto-Cruz-mtz/dotfiles/main/screenshots/2025-09-02-182738_hyprshot.png" >
 
 ### ✨ Características principales
 
