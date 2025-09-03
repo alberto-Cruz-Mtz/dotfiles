@@ -1,5 +1,16 @@
 #!/bin/bash
 
+###########################################################
+# ⚠️ ADVERTENCIA: Este script de instalación está obsoleto. #
+#                                                         #
+# Por favor, no lo uses. Para instalar la configuración,  #
+# sigue los pasos manuales descritos en el archivo README.md. #
+###########################################################
+
+# El script se detendrá inmediatamente para evitar cualquier ejecución accidental.
+echo "Error: Este script de instalación está obsoleto. Por favor, consulta el README.md para las instrucciones de instalación."
+exit 1
+
 # Colores
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -9,7 +20,7 @@ RESET='\033[0m'
 
 show_banner() {
   echo -e "${GREEN}"
-   echo -e "${CYAN}"
+  echo -e "${CYAN}"
   echo "               /\               "
   echo "              /  \              "
   echo "             /    \             "
@@ -21,7 +32,6 @@ show_banner() {
   echo -e "             ${CYAN}Dotfiles Installer for Hyprland & Arch Linux${RESET}"
   echo
 }
-
 
 # Mostrar el banner al inicio
 clear
@@ -87,7 +97,7 @@ fi
 
 # Instalar yay para gestionar paquetes de AUR
 print_info "Instalando yay para gestionar paquetes de AUR..."
-if ! command -v yay &> /dev/null; then
+if ! command -v yay &>/dev/null; then
   cd /tmp
   git clone https://aur.archlinux.org/yay.git
   cd yay
